@@ -3,7 +3,7 @@
 <%= form_for @question do |q| %> 
     <p>
         <%= q.label :question %> <br/>
-        <%= q.text_field :question %> 
+        <%= q.text_area :question %> 
     </p>
     
     <p>
@@ -18,4 +18,15 @@
     <p>
     <%= q.submit %>
     </p>
+
+    # Display Flash Errors
+    <% if @question.errors.any? %>
+    <h2>The following errors prevented the question from getting created</h2>
+    
+    <ul>
+    <% @question.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    </ul>
+    <% end %>
 <% end %>
