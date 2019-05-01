@@ -1,0 +1,21 @@
+<h3> Burning question? </h3> 
+<h4> Ask Maple your question </h4> 
+<%= form_for @question do |q| %> 
+    <p>
+        <%= q.label :question %> <br/>
+        <%= q.text_field :question %> 
+    </p>
+    
+    <p>
+        <%= q.label :name %><br/>
+        <%= q.text_field :name %> 
+    </p>
+
+    <p>
+    <%= q.check_box :stay_anonymous %> <%= q.label "Stay anonymous?" %> <br />
+    </p>
+
+    <p>
+    <%= q.submit %>
+    </p>
+<% end %>
