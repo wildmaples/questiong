@@ -1,0 +1,35 @@
+<h1>Listing Unanswered Questions</h1>
+
+<p>
+
+<%= link_to "Ask a new question", new_question_path %>
+
+</p>
+
+<table>
+
+<tr>
+
+<th>Question</th>
+
+<th>Name</th>
+
+<th>Date submitted</th>
+
+</tr>
+
+<% @questions.each do |question| %>
+
+<tr>
+
+<td><%= question.question %></td>
+<td><%= question.name %></td>
+<td><%= question.created_at %></td>
+<td><%= link_to 'Edit', edit_question_path(question) %></td>
+<td><%= link_to 'Answer this Question', question_path(question) %></td>
+
+</tr>
+
+<% end %>
+
+</table>

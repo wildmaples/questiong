@@ -34,6 +34,18 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # No UI exists to destroy question yet
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    flash[:notice] = 'Question was successfully deleted'
+    redirect_to questions_path
+  end
+
+  def index
+    @questions = Question.all
+  end
+
   private
 
   def question_params
