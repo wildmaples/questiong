@@ -1,31 +1,7 @@
 <h3> Burning question? </h3> 
 <h4> Ask Maple your question </h4> 
-<%= form_for @question do |q| %> 
-    <p>
-        <%= q.label :question %> <br/>
-        <%= q.text_area :question %> 
-    </p>
-    
-    <p>
-        <%= q.label :name %><br/>
-        <%= q.text_field :name %> 
-    </p>
+<%= render 'form' %>
 
-    <p>
-    <%= q.check_box :stay_anonymous %> <%= q.label "Stay anonymous?" %> <br />
-    </p>
 
-    <p>
-    <%= q.submit %>
-    </p>
-
-    <% if @question.errors.any? %>
-    <h2>The following errors prevented the question from getting created</h2>
-    
-    <ul>
-    <% @question.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-    </ul>
-    <% end %>
+    <%= link_to "Back to questions listing", questions_path %>
 <% end %>
