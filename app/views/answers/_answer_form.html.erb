@@ -1,0 +1,31 @@
+<% if @answer.errors.any? %>
+
+<h2>The following errors prevented the answer from getting posted</h2>
+
+<ul>
+<% @answer.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+
+</ul>
+<% end %>
+<%= form_for @answer do |q| %>
+<p>
+<%= q.hidden_field :question_id, input_html: {value: @question} %>
+<%= q.label :answer %><br/>
+<%= q.text_area :answer %>
+</p>
+
+<p>
+<%= q.label :name %><br/>
+<%= q.text_field :name %>
+</p>
+
+<p>
+<%= q.check_box :stay_anonymous %> <%= q.label "Stay anonymous?" %> <br />
+</p>
+
+<p>
+<%= q.submit %>
+</p>
+<% end %>
