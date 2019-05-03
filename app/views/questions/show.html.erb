@@ -7,3 +7,6 @@ Question: <%= @question.question %>
 <p>
 Name: <%= @question.name %>
 </p>
+
+<%= link_to "Answer this question", new_answer_path(:question_id => @question.id) %>
+<%= link_to "Back to questions listing", questions_path %>

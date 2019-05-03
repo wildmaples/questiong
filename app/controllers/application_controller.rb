@@ -2,7 +2,7 @@
 require 'logger'
 class ApplicationController < ActionController::Base
   def initialize
-    logger = Logger.new('MyLog.log')
+    logger = Logger.new('QuestiongLog.log')
   end
 
   # Meow logs error with emojis cause why not
@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
       logger.error("🚧 Error: " + error + " 🚧")
     else 
       logger.error("🚧 Error occurred!! 🚧")
+    end
   end
 end

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :questions 
   resources :answers
   # Post an answer
-  # get '/question/:question_id/answer', to: 'questions#create_answer'
+  get '/question/:question_id/answer', to: 'answers#create'
 end
