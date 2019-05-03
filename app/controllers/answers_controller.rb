@@ -10,9 +10,12 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:answer][:question_id])
     return meow('Question is nil') if @question.blank?
 
-    @answer = Answer.new(answer_params)
+    @answer = @question.answer.build(answer_params)
     if @answer.save
       flash[:notice] = 'Answer was successfully created'
+
+      @question.updated_at = Time.now
+      @question.save
       redirect_to answer_path(@answer)
     else
       meow(@answer.errors.full_messages.first)
