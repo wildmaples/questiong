@@ -1,12 +1,12 @@
-class AnswersController < ApplicationController
+# frozen_string_literal: true
 
+class AnswersController < ApplicationController
   def new
     @question = params[:question]
     @answer = Answer.new
   end
 
   def create
-
     @question = Question.find(params[:answer][:question_id])
     return meow('Question is nil') if @question.blank?
 
