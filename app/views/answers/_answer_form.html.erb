@@ -11,7 +11,7 @@
 <% end %>
 <%= form_for @answer do |q| %>
 <p>
-<%= q.hidden_field :question_id, input_html: {value: @question} %>
+<%= q.hidden_field :question_id, :value => params[:question_id]  %>
 <%= q.label :answer %><br/>
 <%= q.text_area :answer %>
 </p>
