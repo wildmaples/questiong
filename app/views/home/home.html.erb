@@ -1,5 +1,12 @@
-<p> yo </p>
+<title> Questiong </title>
 
-<%= link_to "Answer a Question", questions_path %>
-
-<footer> <%= link_to 'About', about_path %> </footer>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center">Questiong</h1>
+    <p class="lead text-center">Curious about something? Ask some questions and get some answers.</p>
+    <p class="lead text-center">
+      <%= link_to '<button class= "button">Ask</button>'.html_safe, new_question_path %>
+      <%= link_to '<button class= "button">Answer</button>'.html_safe, questions_path %>
+    </p>
+  </div>
+</div>

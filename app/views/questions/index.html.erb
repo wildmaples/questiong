@@ -1,36 +1,29 @@
-<h1>Listing Unanswered Questions</h1>
+<div class="container">
+  <h1>Questions</h1>
+  <p>
+    <%= link_to '<button class= "button">Ask a new question</button>'.html_safe, new_question_path %>
+  </p>
 
-<p>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Question</th>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center col-md-2">Date submitted</th>
+      </tr>
+    </thead>
 
-<%= link_to "Ask a new question", new_question_path %>
-
-</p>
-
-<table>
-
-<tr>
-
-<th>Question</th>
-
-<th>Name</th>
-
-<th>Date submitted</th>
-
-</tr>
-
-<% @questions.each do |question| %>
-
-<tr>
-
-<td><%= question.question %></td>
-<td><%= question.name %></td>
-<td><%= time_ago_in_words(question.created_at) + " ago" %></td>
-<td><%= link_to 'Edit', edit_question_path(question) %></td>
-<td><%= link_to 'View', question_path(question) %></td>
-<td><%= link_to 'Answer', new_question_path(question) %></td>
-
-</tr>
-
-<% end %>
-
-</table>
+    <tbody>
+      <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question %></td>
+        <td class="text-center"><%= question.name %></td>
+        <td class="text-center"><%= time_ago_in_words(question.created_at) + " ago" %></td>
+        <td><%= link_to '<button class= "button">Edit</button>'.html_safe, edit_question_path(question) %></td>
+        <td><%= link_to '<button class= "button">View</button>'.html_safe, question_path(question) %></td>
+        <td><%= link_to '<button class= "button">Answer</button>'.html_safe, new_question_path(question) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
