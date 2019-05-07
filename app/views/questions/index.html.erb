@@ -24,7 +24,7 @@
 
 <td><%= question.question %></td>
 <td><%= question.name %></td>
-<td><%= question.created_at %></td>
+<td><%= distance_of_time_in_words(Time.now, question.created_at) + " ago" %></td>
 <td><%= link_to 'Edit', edit_question_path(question) %></td>
 <td><%= link_to 'View', question_path(question) %></td>
 <td><%= link_to 'Answer', new_question_path(question) %></td>
