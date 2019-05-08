@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      flash[:notice] = 'Your question was successfully created 🙌'
+      flash[:notice] = 'Your question was successfully posted 🙌'
       redirect_to question_path(@question)
     else
       render 'new'
@@ -31,17 +31,6 @@ class QuestionsController < ApplicationController
       redirect_to question_path(@question)
     else
       render 'edit'
-    end
-  end
-
-  def create_answer
-    @question = Question.find(params[:question_id])
-                        .Answers.create(params[:answer])
-    if @question.save
-      flash[:notice] = 'Answer was sucessfully created'
-      redirect_to question_path(@question)
-    else
-      flash[:notice] = 'Something went wrong'
     end
   end
 

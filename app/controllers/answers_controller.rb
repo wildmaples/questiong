@@ -12,11 +12,11 @@ class AnswersController < ApplicationController
 
     @answer = @question.answer.build(answer_params)
     if @answer.save
-      flash[:notice] = 'Answer was successfully created'
+      flash[:notice] = 'Your answer was successfully created 🙌'
 
       @question.updated_at = Time.now
       @question.save
-      redirect_to answer_path(@answer)
+      redirect_to question_path(@question)
     else
       meow(@answer.errors.full_messages.first)
       render('new')

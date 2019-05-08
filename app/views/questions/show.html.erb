@@ -1,24 +1,26 @@
-<h1>This is the question you sent</h1>
-<p>
-  Question: <%= @question.question %>
-</p>
+<div class="container">
+  <h1>This is the question you sent</h1>
+  <p>
+    Question: <%= @question.question %>
+  </p>
 
-<p>
-  Name: <%= @question.name %>
-</p>
+  <p>
+    Name: <%= @question.name %>
+  </p>
 
-<%= link_to "Answer this question", new_answer_path(:question_id => @question.id) %><br />
+  <%= link_to '<button class= "button">Answer this question</button>'.html_safe, new_answer_path(:question_id => @question.id) %> <br />
+  <hr>
+  <% if @answer.exists? %>
 
-<% if @answer.exists? %>
+  <h1>Answers</h1>
 
-<h1>Answers</h1>
+  <% @answer.each do |ans| %>
+  <p>
+    <%= ans.name %> says <%= ans.answer %>
+  </p>
+  <% end %>
 
-<% @answer.each do |ans| %>
-<p>
-  <%= ans.name %> says <%= ans.answer %>
-</p>
-<% end %>
+  <% end %>
 
-<% end %>
-
-<%= link_to "Back to questions listing", questions_path %>
+  <%= link_to "Back to questions listing", questions_path %>
+</div>
