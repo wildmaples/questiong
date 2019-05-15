@@ -9,15 +9,23 @@
       <tr>
         <th scope="col" class="text-center">Question</th>
         <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center">Username</th>
         <th scope="col" class="text-center col-md-2">Date submitted</th>
       </tr>
     </thead>
 
     <tbody>
       <% @questions.each do |question| %>
+        <% if question.user && !question.stay_anonymous %>
+          <% username_display = question.user.username %>
+        <% else %>
+          <% username_display = "Anonymous" %>
+        <% end %> 
+
       <tr>
         <td><%= question.question %></td>
         <td class="text-center"><%= question.name %></td>
+        <td class="text-center"><%= username_display %></td>
         <td class="text-center"><%= time_ago_in_words(question.created_at) + " ago" %></td>
         <td><%= link_to '<button class= "button">Edit</button>'.html_safe, edit_question_path(question) %></td>
         <td><%= link_to '<button class= "button">View</button>'.html_safe, question_path(question) %></td>

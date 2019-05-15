@@ -8,6 +8,10 @@
     Name: <%= @question.name %>
   </p>
 
+  <p>
+    Created by: <%= @question.user.username if @question.user %>
+  </p>
+
   <%= link_to '<button class= "button">Answer this question</button>'.html_safe, new_answer_path(:question_id => @question.id) %> <br />
   <hr>
   <% if @answer.exists? %>
