@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'home', to: 'home#home'
   get 'about', to: 'about#about'
 
+  get 'signup', to: 'users#new'
+  resources :users
   resources :questions
   resources :answers
   # Post an answer
