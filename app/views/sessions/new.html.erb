@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row header-spacer">
+        <h1 class="col-sm-6 mt-md-2" align="center">Log In</h1>
+    </div>
+    <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :email %>
+        </div>
+        <div class="col-sm-4">
+            <%= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :password %>
+        </div>
+        <div class="col-sm-4">
+            <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
+            <%= button_to "Create an account", new_user_path, :class => "btn btn-info btn-lg", :method => :get %>
+        </div>
+        <% end %>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to "Cancel request & return to articles listing", questions_path %>
+    </div>
+</div>
