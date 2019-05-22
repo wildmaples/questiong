@@ -1,24 +1,15 @@
-# README
+# Questiong
+Site dedicated for asking and answering questions.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Version
+* Ruby version: 2.6.0
+* Rails 5.2.3
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# To-do
+- Add User profile view containing user questions and answers
+- Add option for user to change account passwords
+- Add email authentication for account creation
+- Change anonymous flag to view so it doesn't show username or name if turned on
+- Add pagination
+  - Question view
+  - Answer view 
