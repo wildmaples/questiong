@@ -1,12 +1,21 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+
+  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action only: [ :edit, :update, :destroy] do
+    require_same_user(@question.user)
+  end
+  
+
   def new
     @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
+    @question.user = current_user
     if @question.save
       flash[:notice] = 'Your question was successfully posted 🙌'
       redirect_to question_path(@question)
@@ -16,16 +25,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
     @answer = @question.answer
   end
 
   def edit
-    @question = Question.find(params[:id])
   end
 
   def update
-    @question = Question.find(params[:id])
     if @question.update(question_params)
       flash[:notice] = 'Your question was successfully updated 🙌'
       redirect_to question_path(@question)
@@ -36,7 +42,6 @@ class QuestionsController < ApplicationController
 
   # No UI exists to destroy question yet
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
     flash[:notice] = 'Question was successfully deleted'
     redirect_to questions_path
@@ -47,8 +52,11 @@ class QuestionsController < ApplicationController
   end
 
   private
+    def set_question
+      @question = Question.find(params[:id])  
+    end
 
-  def question_params
-    params.require(:question).permit(:question, :name, :stay_anonymous)
-  end
+    def question_params
+      params.require(:question).permit(:question, :name, :stay_anonymous)
+    end
 end
