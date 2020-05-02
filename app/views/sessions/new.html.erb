@@ -22,11 +22,11 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
-            <%= button_to "Create an account", new_user_path, :class => "btn btn-info btn-lg", :method => :get %>
+            <%= link_to "Create an account", signup_path, :class => "btn btn-info btn-lg" %>
         </div>
         <% end %>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
-        <%= link_to "Cancel request & return to articles listing", questions_path %>
+        <%= link_to "Return to view questions", questions_path %>
     </div>
 </div>
