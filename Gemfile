@@ -11,8 +11,8 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'rubocop', require: false
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

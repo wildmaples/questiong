@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:index, :show]
-  before_action only: [ :edit, :update, :destroy] do
+  before_action :set_question, only: %i[show edit update destroy]
+  before_action :require_user, except: %i[index show]
+  before_action only: %i[edit update destroy] do
     require_same_user(@question.user)
   end
-  
 
   def new
     @question = Question.new
@@ -28,8 +26,7 @@ class QuestionsController < ApplicationController
     @answer = @question.answer
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @question.update(question_params)
@@ -52,11 +49,12 @@ class QuestionsController < ApplicationController
   end
 
   private
-    def set_question
-      @question = Question.find(params[:id])  
-    end
 
-    def question_params
-      params.require(:question).permit(:question, :name, :stay_anonymous)
-    end
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  def question_params
+    params.require(:question).permit(:question, :name, :stay_anonymous)
+  end
 end

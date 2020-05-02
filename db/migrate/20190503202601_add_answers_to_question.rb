@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAnswersToQuestion < ActiveRecord::Migration[5.2]
   def change
     add_reference :questions, :answer, foreign_key: true
