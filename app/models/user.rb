@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :questions
   before_save { self.email = email.downcase }
-  validates :username, presence: true , 
-    uniqueness: { case_sensitive: false }, 
-    length: { minimum: 4, maximum: 25 }
+  validates :username, presence: true,
+                       uniqueness: { case_sensitive: false },
+                       length: { minimum: 4, maximum: 25 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
- 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
   validates :email, presence: true, length: { maximum: 105 },
-    uniqueness: { case_sensitive: false },
-    format: { with: VALID_EMAIL_REGEX }
+                    uniqueness: { case_sensitive: false },
+                    format: { with: VALID_EMAIL_REGEX }
 
   validates :password, presence: true, length: { minimum: 9 }
   has_secure_password
-end 
+end
