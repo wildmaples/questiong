@@ -23,8 +23,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
           username: @username,
           email: 'maple@questiong.com',
           password: 'password_should_be_minimum_9_characters',
-        }
-      }
+        } }
     end
 
     assert_redirected_to questions_path
@@ -38,8 +37,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
           username: @username,
           email: 'maple@questiong.com',
           password: 'password',
-        }
-      }
+        } }
     end
   end
 end
