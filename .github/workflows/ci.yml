@@ -29,6 +29,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
       - name: Run tests
         run: |
+          sudo apt-get install libsqlite3-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
@@ -42,6 +43,7 @@ jobs:
           ruby-version: 2.6.x
       - name: Run style checks
         run: |
+          sudo apt-get install libsqlite3-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rubocop
