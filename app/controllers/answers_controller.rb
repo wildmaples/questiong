@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
 
       @question.updated_at = Time.now
       @question.save
-      redirect_to question_path(@question)
+      redirect_to(question_path(@question))
     else
       meow(@answer.errors.full_messages.first)
       render('new')

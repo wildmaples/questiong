@@ -16,9 +16,9 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     if @question.save
       flash[:notice] = 'Your question was successfully posted 🙌'
-      redirect_to question_path(@question)
+      redirect_to(question_path(@question))
     else
-      render 'new'
+      render('new')
     end
   end
 
@@ -31,9 +31,9 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       flash[:notice] = 'Your question was successfully updated 🙌'
-      redirect_to question_path(@question)
+      redirect_to(question_path(@question))
     else
-      render 'edit'
+      render('edit')
     end
   end
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     flash[:notice] = 'Question was successfully deleted'
-    redirect_to questions_path
+    redirect_to(questions_path)
   end
 
   def index

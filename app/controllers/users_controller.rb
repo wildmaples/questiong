@@ -16,13 +16,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Your account was successfully created! Welcome, #{@user.username} 😇"
-      redirect_to questions_path
+      redirect_to(questions_path)
     else
-      render 'new'
+      render('new')
     end
   end
 
   private
+
+  def repo
+    @repo ||= UserRepository.new
+  end
 
   def set_user
     @user = User.find(params[:id])
@@ -30,5 +34,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
-   end
+  end
 end
